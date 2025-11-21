@@ -23,7 +23,6 @@ public class KeywordsDetector {
     public static void detectAndPrint(String[] sentences, String[] keywords) {
         
         for(int i = 0 ; i < sentences.length ; i++){ //עוברת על כל המשפטים
-            int x = 0;
             String chek = "";
             for(int j = 0; j < sentences[i].length() ; j++){ //מחלקת כל משפט למילים
                 if(sentences[i].charAt(j) != ' '){
