@@ -18,39 +18,64 @@ public class MyString {
 
     /** Returns the lowercase version of the given string. */
     public static String lowerCase(String str) {
-        String x = str.toLowerCase();
-        return x;
+
+      String newStr = "";
+    
+        for (int i = 0 ; i < str.length() ; i++) {
+
+            char ch = str.charAt(i);
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char)(ch + 32);
+         }
+        
+        newStr = newStr + ch;
+    }
+    
+    return newStr;
     }
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-       char [] S1 = new char[str1.length()];
-        char [] S2 = new char[str2.length()];
 
-        for(int i = 0; i < str1.length() ; i++){
-            S1[i] = str1.charAt(i);
+        if (str2.length() == 0) {
+            return true;
+        }
+    
+        if (str1.length() == 0) {
+            return false;
         }
 
-        for(int i = 0; i < str2.length() ; i++){
-            S2[i] = str2.charAt(i);
+        char[] S1 = new char[str1.length()];
+        char[] S2 = new char[str2.length()];
+
+        for (int i = 0; i < str1.length(); i++) {
+        S1[i] = str1.charAt(i);
         }
 
-        int x = 0;
-        for(int i = 0; i < S1.length; i++){
-            if(S1[i] == S2[0]){
-                x = i;
-                break;
+        for (int i = 0; i < str2.length(); i++) {
+        S2[i] = str2.charAt(i);
+        }
+
+        for (int i = 0; i <= S1.length - S2.length; i++) {
+    
+            if (S1[i] == S2[0]) {
+                boolean match = true;
+                int x = i;
+            
+                    for (int j = 0; j < S2.length; j++) {
+                        if (S1[x] != S2[j]) { 
+                            match = false; 
+                            break; 
+                        }   
+                        x++;
+                    }
+            
+                if (match) {
+                    return true;
+                }
             }
         }
-
-        for(int i = 0 ; i < S2.length ; i++){
-            if(S1[x] != S2[i]){
-                return false;
-            }
-            x++;
-        }
-
-
-        return true;
+    
+        return false;
     }
 }
