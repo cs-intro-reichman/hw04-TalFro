@@ -171,51 +171,29 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        char [] S1 = new char[str1.length()];
-        char [] S2 = new char[str2.length()];
-        
-        for(int i = 0 ; i < S1.length; i++){
-            S1 [i] = str1.charAt(i);
-        }
-         for(int i = 0 ; i < S2.length; i++){
-            S2 [i] = str2.charAt(i);
+
+       int min = Math.min(str1.length(), str2.length());
+
+        for (int i = 0; i < min ; i++) {
+            char c1 = str1.charAt(i);
+            char c2 = str2.charAt(i);
+
+                if (c1 > c2) {
+                    return 1;
+                }
+
+                if (c1 < c2) {
+                return -1;
+                }
         }
 
-        if(S1.length > S2.length){
-            for (int i = 0; i < S1.length; i++){
-                if (S1[i] > S2[i]){
-                    return 1;
-                }
-                 if (S1[i] < S2[i]){
-                    return -1;
-                }
-            }
-            return 1;
+        if (str1.length() > str2.length()) {
+        return 1;
+        }
+        if (str1.length() < str2.length()) {
+        return -1;
         }
 
-        if(S1.length < S2.length){
-            for (int i = 0; i < S1.length; i++){
-                if (S1[i] > S2[i]){
-                    return 1;
-                }
-                 if (S1[i] < S2[i]){
-                    return -1;
-                }
-            }
-            return -1;
-        }
-        
-        if(S1.length == S2.length){
-            for (int i = 0; i < S1.length; i++){
-                if (S1[i] > S2[i]){
-                    return 1;
-                }
-                 if (S1[i] < S2[i]){
-                    return -1;
-                }
-            }
-            return 0;
-        }
-        return -2;
+        return 0;
     }
 }
